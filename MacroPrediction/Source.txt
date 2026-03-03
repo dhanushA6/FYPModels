@@ -1,0 +1,158 @@
+Methodology for Synthetic Clinical Nutrition Dataset Generation
+
+Basal Metabolic Rate (BMR) Calculation
+
+BMR was calculated using the Mifflin–St Jeor equation.
+
+For males:
+BMR = 10 × weight (kg) + 6.25 × height (cm) − 5 × age + 5
+
+For females:
+BMR = 10 × weight (kg) + 6.25 × height (cm) − 5 × age − 161
+
+This equation is widely accepted in clinical nutrition practice.
+
+Total Daily Energy Expenditure (TDEE)
+
+TDEE was computed as: BMR × activity multiplier.
+
+Activity multipliers used:
+
+Sedentary: 1.20
+
+Light: 1.375
+
+Moderate: 1.55
+
+Active: 1.725
+
+This converts resting energy needs into total daily energy requirements.
+
+Calorie Adjustments Based on Clinical Factors
+
+Age > 30 years: subtract 5 kcal per additional year.
+
+Steps > 10,000/day: increase calories up to 10%.
+
+Hypertension (≥140/90 mmHg): reduce calories by 5%.
+
+Weight loss goal: reduce 300 kcal/day.
+
+Final calorie values restricted between 1200–3500 kcal/day.
+
+Carbohydrate Ratio Determination
+
+Base formula:
+Carbohydrate ratio = 0.55 − (HbA1c − 6.5) × 0.04
+
+Clipped within 25%–55% of total calories.
+
+Additional carb reductions applied if:
+
+Diabetes duration > 5 or 10 years
+
+Fasting glucose > 130 mg/dL
+
+Postprandial glucose > 180 mg/dL
+
+Sleep < 6 hours
+
+Smoking present
+
+Alcohol use present
+
+Primary goal is glycemic control
+
+Protein Ratio Determination (Renal Safety Based)
+
+eGFR ≥ 90 → 20% of calories
+
+eGFR 60–89 → 18%
+
+eGFR < 60 → 15%
+
+Minimum protein safeguard:
+
+0.8 g/kg body weight (normal kidney function)
+
+0.6 g/kg body weight (renal impairment)
+
+Fat Ratio Determination
+
+Fat ratio calculated as:
+Fat = 1 − carbohydrate ratio − protein ratio
+
+Restricted within 20%–45% of total calories.
+
+Fat reduced if:
+
+Triglycerides >150 mg/dL (−5%)
+
+Triglycerides >250 mg/dL (−10%)
+
+LDL >130 mg/dL (−5%)
+
+LDL >160 mg/dL (−10%)
+
+Slight increase applied for female gender and alcohol use.
+
+Ratios normalized if total exceeded 100%.
+
+Conversion of Macronutrients to Grams
+
+Carbohydrates: 4 kcal per gram
+
+Protein: 4 kcal per gram
+
+Fat: 9 kcal per gram
+
+Formulas:
+
+Carbohydrates (g) = Total calories × carb ratio / 4
+
+Protein (g) = Total calories × protein ratio / 4
+
+Fat (g) = Total calories × fat ratio / 9
+
+Fiber Estimation
+
+Fiber formula:
+Fiber = 25
++ (steps / 2500)
++ (HbA1c − 6) × 2
++ 5 (if smoking)
++ 3 (if HDL < 40)
+
+Additional +2 g if sleep > 7 hours.
+
+Final fiber range restricted to 25–50 g/day.
+
+Correlated Clinical Feature Sampling
+
+HbA1c correlated with fasting and postprandial glucose.
+
+BMI correlated with lipid profile and blood pressure.
+
+Age correlated with blood pressure and eGFR decline.
+
+Diabetes duration influenced renal function.
+
+Physical activity level influenced step count.
+
+This ensures realistic biological relationships in the dataset.
+
+Output Targets Generated
+Each synthetic patient record includes:
+
+Daily calories (kcal)
+
+Daily carbohydrates (g)
+
+Daily protein (g)
+
+Daily fat (g)
+
+Daily fiber (g)
+
+Final Summary
+The dataset was generated using clinically validated metabolic equations and evidence-based medical nutrition therapy principles. Calorie needs were estimated using the Mifflin–St Jeor equation and adjusted using activity levels and health conditions. Macronutrients were dynamically tailored based on glycemic control, renal function, lipid profile, blood pressure, and lifestyle factors to ensure medical plausibility and physiological realism.
